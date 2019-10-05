@@ -15,7 +15,7 @@ def scraper_login():
 
 def run_scraper(r):
 # run the bot on subreddit designated in config.py
-    post = r.submission(id = 'cihc3z')
+    post = r.submission(id = 'd7yuot') #NOTE: edit submission id here
     submission_info = []
     for top_level_comment in post.comments:
         if isinstance(top_level_comment, MoreComments): #ignore MoreComments
