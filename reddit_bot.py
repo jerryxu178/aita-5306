@@ -22,13 +22,13 @@ def run_scraper(r):
             continue
         #print "start"
         #print "score: " + str(top_level_comment.score)
-        #print "hours elapsed: " + str((top_level_comment.created_utc-s1.created_utc)/3600)
+        #print "minutes elapsed: " + str((top_level_comment.created_utc-s1.created_utc)/60)
         #print "number of replies: " + str(len(top_level_comment.replies))
         #print "number of words: " + str(len(top_level_comment.body.split(" ")))
         #print "end
         
         submission_info.append([top_level_comment.score
-        , str((top_level_comment.created_utc-post.created_utc)/3600)
+        , str(round(((top_level_comment.created_utc-post.created_utc)/60),1))
         , str(len(top_level_comment.replies))
         , str(len(top_level_comment.body.split(" ")))
         ])
@@ -39,7 +39,7 @@ def run_scraper(r):
         counter += 1
     submission_info = submission_info[:10]
         
-    with open('data1.csv',mode='w') as data:
+    with open('data.csv',mode='w') as data:
         data_writer = csv.writer(data, delimiter = ',', quoting = csv.QUOTE_MINIMAL)
         
         for elt in submission_info:
